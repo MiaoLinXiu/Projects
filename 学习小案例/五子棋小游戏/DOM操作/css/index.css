@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.carousel{
+    position: relative;
+    width: 1200px;
+    height:367px ;
+    margin: 50px 0px 0px 80px;
+   /* background-color: #9eb737; */
+    overflow: hidden;
+}
+.imgBox{
+	position: relative;
+    width: 1200px;
+    height: 336px;
+    /* background-color: black; */
+}
+ul{
+    width: 100%;
+}
+ul li{
+    width: 730px;
+    height: 336px;
+    position: absolute;
+    transition: 1s;/*设置动画的时间*/
+    cursor: pointer;
+}
+.imgBox li img{
+    display: block;/*清除图片之间的间距*/
+    /*width: 730px;*/
+    /*height: 336px;*/
+}
+.lineBar{
+    width: 1200px;
+    height: 31px;
+    /*background-color: red;*/
+    text-align: center;
+}
+.lineBar span{
+    display: inline-block;/*行内元素既可以设置大小，也可以设置宽高*/
+    width: 35px;
+    height: 3px;
+    background-color: #CCCCCC;
+}
+.list1{
+    z-index: 1;
+    transform: scale(0.81);
+    transform-origin: 0% 100%/*水平方向缩放不变 垂直方向缩放*/;
+}
+.list2{
+    transform: translateX(235px);
+    z-index: 2;
+    /*left: 235px;*/
+}
+.list3{
+    transform: translateX(730px) scale(0.81);
+    z-index: 1;
+    transform-origin: 0% 100%;/*水平方向缩放不变 垂直反向缩放*/;
+    /*left: 235px;*/
+}
+.list4{
+    transform: translateX(965px) scale(0.81);
+    transform-origin: 100% 100%;
+    /*left: 235px;*/
+}
+.list5{
+    transform: translateX(1200px) scale(0.81);
+    transform-origin: 100% 100%;
+    /*left: 235px;*/
+}
+.list6{
+    transform: translateX(1435px) scale(0.81);
+    transform-origin: 100% 100%;
+    /*left: 235px;*/
+}
+.btn{
+	position: absolute;
+	width:41px;
+	height: 70px;
+	top: 155px;
+	background: url(../img/icon-slides.png) no-repeat;
+	z-index: 10;
+	cursor: pointer;
+}
+.btn:hover{
+	opacity: 0.8;
+}
+.left_btn{
+	left: 0;
+}
+.right_btn{
+	right: 0;
+	background-position: -41px 0;
+}
+.bg{
+    background-color: green;
+}

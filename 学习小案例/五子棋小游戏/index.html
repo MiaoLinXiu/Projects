@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五子棋小游戏</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            background-color: #CCCCCC;
+        }
+        .title{
+            width: 200px;
+            height: 50px;
+            margin: 10px auto;
+            font-size: 30px;
+            font-family:"微软雅黑";
+            color: white;
+            text-align: center;
+            line-height: 50px;
+        }
+        #canvas{
+            display: block;
+            /*width: 450px;*/
+            /*height: 450px;*/
+            margin: 60px auto;
+            background-color: white;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var canvas = document.querySelector('#canvas');/*获取元素的操作*/
+            var ctx = canvas.getContext('2d');/*获取我们的绘制的画笔*/
+            var chessColor = ['black','white'];
+            var step = 0;
+            var maparr = new Array();
+            var mode = [
+                [1,0],//水平
+                [0,1],//竖直
+                [1,1],//右下 左上
+                [1,-1]//右上 左下
+            ];
+            for (var i = 0; i < 15; i++){
+                maparr[i] = [];
+                for (var j = 0; j < 15; j++){
+                    maparr[i][j] = 0;
+                }
+            }
+            canvas.width = 450;//画板为图片（尺寸数据，我们需要修改他的尺寸，而不是样式）
+            canvas.height = 450;//设置画板的高度，而不是在样式里面设置他的高度，因为canvas画布是一张图片
+            ctx.beginPath();
+            ctx.strokeStyle = "balck";
+            draw();
+            ctx.stroke();//将之前所有的路径绘制一遍，放在循环外面保证所有线条只绘制一遍，颜色才一样
+            function draw(){//封装函数
+                for(var i = 1; i < 15; i++) {
+                    ctx.moveTo(30*i, 30);//起点
+                    ctx.lineTo(30*i, 420);//终点
+                    ctx.moveTo(30,30*i);
+                    ctx.lineTo(420,30*i);
+                }
+            }
+            ctx.closePath();
+            function drawchess(x,y,color){//传入一个颜色代码，绘制一个棋子
+                ctx.beginPath();//开始绘制
+                ctx.arc(x,y,15,0,2*Math.PI,false);
+                ctx.fillStyle = color;
+                // ctx.strokeStyle = 'black';
+                ctx.fill();//填充
+                ctx.stroke();
+                ctx.closePath();//结束绘制
+            }
+            //drawchess(300,60,'black');
+            //开始绘制
+            canvas.addEventListener('click',function (e) {//监听器
+                var dx = Math.floor((e.offsetX+15)/30)*30;//自动瞄准系统
+                var dy = Math.floor((e.offsetY+15)/30)*30;
+                if (dx == 0 || dx == 450 || dy == 0 || dy == 450){//保证棋盘之外的区域不会有棋子
+                    return;
+                }
+                if (maparr[dx/30 - 1][dy/30 - 1] == 0) {
+                    drawchess(dx, dy, chessColor[step%2]);//e.offsetX和e.offsetY得到点击位置的坐标
+                    maparr[dx/30 - 1][dy/30 - 1] = chessColor[step%2];//当此时这个点有棋子时值为1，所以不能再下棋子在这个点
+                    for (var i = 0; i < 4; i++){
+                        checkwin(dx/30 - 1,dy/30 - 1,chessColor[step%2],mode[i]);
+                    }
+                    // checkwin(dx/30 - 1,dy/30 - 1,chessColor[step%2],mode[0]);
+                    // checkwin(dx/30 - 1,dy/30 - 1,chessColor[step%2],mode[1]);
+                    // checkwin(dx/30 - 1,dy/30 - 1,chessColor[step%2],mode[2]);
+                    // checkwin(dx/30 - 1,dy/30 - 1,chessColor[step%2],mode[3]);
+                    // checkwinY(dx/30 - 1,dy/30 - 1,chessColor[step%2]);
+                    step++;
+                }
+            })
+            function checkwin(x,y,color,mode) {
+                //console.log(x,y,color);
+                var count = 0;
+                for (var i = 1; i < 5; i++) {//水平方向
+                    if (maparr[x + i*mode[0]]) {
+                        if (maparr[x + i*mode[0]][y+i*mode[1]] == color) {
+                            count++;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                }
+                for (var i = 1; i < 5; i++) {
+                    if (maparr[x - i*mode[0]]) {
+                        if (maparr[x - i*mode[0]][y-i*mode[1]] == color) {
+                            count++;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                }
+                if (count >= 4){
+                    if (color == 'black'){
+                        alert("黑方胜，恭喜！");
+                    }
+                    else if (color == 'white'){
+                        alert("白方胜，恭喜！");
+                    }
+                }
+            }
+            // function checkwinY(x,y,color) {
+            //     //console.log(x,y,color);
+            //     var count = 0;
+            //     for (var i = 1; i < 5; i++) {
+            //         if (maparr[x]) {
+            //             if (maparr[x][y+i] == color) {
+            //                 count++;
+            //             }
+            //             else {
+            //                 break;
+            //             }
+            //         }
+            //     }
+            //     for (var i = 1; i < 5; i++) {
+            //         if (maparr[x]) {
+            //             if (maparr[x][y-i] == color) {
+            //                 count++;
+            //             }
+            //             else {
+            //                 break;
+            //             }
+            //         }
+            //     }
+            //     console.log('竖直方向有',count+1,'个',color);
+            // }
+        }
+    </script>
+    <!--
+        canvas:画布可以被js操作
+        如何绘制
+            1.提笔到某个位置
+            2.描述绘制路径
+            3.开始绘制
+            4.重新开始绘制（提笔）
+           制作流程：
+           1.绘制棋盘
+            1.1 绘制直线的操作
+           2.绘制棋子
+            2.1 如何绘制棋子
+            2.2 如何进行交互，点击下棋
+            2.3 交换手，一人下一次棋
+            2.4 棋子落点的问题（棋子必须下到线交叉点）
+            2.5 友军判断 已经有棋子的位置不能再下棋
+           3游戏胜负判断
+             胜负核心原理：判断当前下的棋子周围是否有5个连续连一起的相同颜色棋子
+                            一条线上当前节点左右颜色连续累加超过5，那么这个颜色就赢了
+           4.机器下棋
+
+
+    -->
+</head>
+<body>
+    <div class="title">五子棋小游戏</div>
+    <canvas id="canvas"></canvas>
+</body>
+</html>

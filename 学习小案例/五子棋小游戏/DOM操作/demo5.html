@@ -1,0 +1,220 @@
+ <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>DOM搜索</title>
+		<link href="css/reset.css" rel="stylesheet" />
+		<style>
+			.search{
+				width: 800px;
+				height: 450px;
+				margin: 50px auto;
+			}
+			.clearfix:after{
+				display: block;
+				height: 0;
+				clear: both;
+				content: "";
+				visibility: hidden;
+			}
+			.left{
+				float: left;
+			}
+			.serach_top{
+				height: 30px;
+				line-height: 30px;
+			}
+			.card{
+				box-sizing: border-box;
+				width:280px;
+				height: 30px;
+			}
+			.card1{
+				margin: 0 40px 0 60px;
+			}
+			.card input{
+				box-sizing: border-box;
+				width: 200px;
+				height: 30px;
+				border: 1px solid #A3A3A2;
+				border-radius: 5px;
+				outline: none;
+				padding-left: 5px;
+			}
+			.card1 input{
+				margin-left: 15px;
+			}
+			.card2 input{
+				margin-left: 10px;
+			}
+			.serach_btn{
+				width: 80px;
+				height: 32px;
+				line-height: 32px;
+				margin-left: 35px;
+				background: #298D3C;
+				font-size: 16px;
+				color: #FFFFFF;
+				border-radius: 5px;
+				border: none;
+				outline: none;
+				cursor: pointer;
+			}
+			table{
+				width: 100%;
+				border-collapse: collapse;
+				margin-top: 20px;
+			}
+			tr td{
+				text-align: center;
+				height: 38px;
+				line-height: 38px;
+				border: 1px solid #CCCCCC;
+			}
+			thead{
+				background: #F1F1F2;
+				font-size: 16px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		 <form action="" method="get" class="search">
+			 <div class="serach_top clearfix">
+				 <div class="card card1 left">
+					 身份证<input type="text" name="cardnum" class="cardnum"/>
+				 </div>
+				 <div class="card card2 left">
+					准考证号<input type="text" name="gradenum" class="gradenum"/>
+				 </div>
+				 <input type="button" value="搜索" class="serach_btn left"/>
+			 </div>
+			 <table>
+				 <thead>
+					 <tr>
+						 <td>身份证</td>
+						 <td>准考证号</td>
+						 <td>姓名</td>
+						 <td>语文</td>
+						 <td>数学</td>
+						 <td>英语</td>
+						 <td>理综</td>
+					 </tr>
+				 </thead>
+				 <tbody class="tbody">
+					 <tr>
+					 	<td class="td1">510321</td>
+					 	<td class="td2">cd312</td>
+					 	<td>令狐冲</td>
+					 	<td>64</td>
+					 	<td>56</td>
+					 	<td>12</td>
+					 	<td>143</td>
+					 </tr>
+					 <tr>
+						 <td class="td1">510322</td>
+						 <td class="td2">cd313</td>
+						 <td>郭靖</td>
+						 <td>69</td>
+						 <td>26</td>
+						 <td>12</td>
+						 <td>143</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510323</td>
+					 	<td class="td2">cd314</td>
+					 	<td>苗人凤</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510324</td>
+					 	<td class="td2">cd315</td>
+					 	<td>韦小宝</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510325</td>
+					 	<td class="td2">cd316</td>
+					 	<td>吴六奇</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510326</td>
+					 	<td class="td2">cd317</td>
+					 	<td>陈进南</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510327</td>
+					 	<td class="td2">cd318</td>
+					 	<td>李自成</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510328</td>
+					 	<td class="td2">cd319</td>
+					 	<td>多隆</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510329</td>
+					 	<td class="td2">cd320</td>
+					 	<td>岳不群</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+					 <tr>
+					 	<td class="td1">510330</td>
+					 	<td class="td2">cd321</td>
+					 	<td>任我行</td>
+					 	<td>45</td>
+					 	<td>76</td>
+					 	<td>12</td>
+					 	<td>122</td>
+					 </tr>
+				 </tbody>
+			 </table>
+		 </form>
+	</body>
+	<script type="text/javascript">
+		var card = document.querySelector(".cardnum");
+		var grade = document.querySelector(".gradenum");
+		var td1 = document.querySelectorAll(".td1");
+		var td2 = document.querySelectorAll(".td2");
+		var search = document.querySelector(".serach_btn");
+		var tbody = document.querySelector(".tbody");
+		var trs = document.querySelectorAll("tr");
+		var childs = tbody.children;
+		// console.log(trs[1]);
+		search.onclick = function(){
+			var val1 = card.value,
+			val2 = grade.value;
+			for(var i = childs.length -1; i >= 0; i--){
+				if((td1[i].innerHTML != val1  && td2[i].innerHTML != val2) && (val1 != "" || val2 != "")){
+					tbody.removeChild(childs[i]);
+				}
+			}
+		}
+	</script>
+</html>

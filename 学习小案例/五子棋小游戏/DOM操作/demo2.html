@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>个性签名</title>
+		<link href="css/reset.css" rel="stylesheet"/>
+	</head>
+	<style>
+		body{
+			background: #AED5ED;
+			font-family: "微软雅黑";
+		}
+		.clearfix:after{
+			content: "";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+		.left{
+			float: left;
+		}
+		.right{
+			float: right;
+		}
+		.signature{
+			box-sizing: border-box;
+			width: 450px;
+			height: 226px;
+			border-radius: 0 0 5px 5px;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.signature_header{
+			height: 70px;
+			font-size: 18px;
+			line-height: 70px;
+			background: url(img/head.png) no-repeat 150px 9px #FFFFFF;
+			padding-left: 223px;
+		}
+		.signature_header a{
+			color: #B766C4;
+		}
+		.signature_cont{
+			height: 156px;
+			background: #DFE2A8;
+		}
+		.content{
+			height: 78px;
+			line-height: 78px;
+			font-size: 16px;
+			padding-left: 20px;
+		}
+		.content .pen{
+			width: 16px;
+			height: 16px;
+			background: url(img/pencil.png) no-repeat;
+			margin: 30px 0 0 25px;
+		}
+		.content1{
+			position: relative;
+			border-bottom: 1px dashed #AED5ED;
+		}
+		.content2{
+			position: relative;
+		}
+		.text{
+			display: none;
+			position: absolute;
+			width: 398px;
+			height: 34px;
+			top: -6px;
+			left: 20px;
+		}
+		.text .signin{
+			box-sizing: border-box;
+			width: 249px;
+			height: 34px;
+			border: 1px solid #AA33C6;
+			padding-left: 10px;
+			font-size: 14px;
+			caption-side: ##000000;
+			outline: none;
+		}
+		.determine,.cancle{
+			height: 34px;
+			line-height: 34px;
+			padding: 0 15px;
+			font-size: 14px;
+			color: #FFFFFF;
+			background: #AA33C6;
+			border-radius: 5px;
+			border: none;
+			outline: none;
+			margin-left: 10px;
+			cursor: pointer;
+			overflow: hidden;
+		}
+	</style>
+	<body>
+		<div class="signature">
+			<div class="signature_header">
+				<a href="#">个性签名</a>
+			</div>
+			<div class="signature_cont">
+				<div class="content1 content clearfix">
+					<span class="left words" >志明与春娇</span>
+					<em class="pen left"></em>
+					<div class="text">
+						<input type="text" name="signIn" value="222" class="signin" id="signin"/>
+						<button class="determine">确定</button>
+						<button class="cancle">取消</button>
+					</div>
+				</div>
+				<div class="content2 content clearfix">
+					<span class="left words">余文乐和杨千嬅</span>
+					<em class="pen left"></em>
+					<div class="text">
+						<input type="text" name="signIn" value="" class="signin" />
+						<button class="determine">确定</button>
+						<button class="cancle">取消</button>
+					</div>
+					</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var oSign = document.querySelectorAll(".pen");
+		var oSignarea = document.querySelectorAll(".text");
+		var oipt = document.querySelectorAll(".signin");
+		var otext = document.querySelectorAll(".words");
+		var confirm = document.querySelectorAll(".determine");
+		var cancle = document.querySelectorAll(".cancle");
+		for(var i = 0; i < oipt.length; i++){
+			oipt[i].value = otext[i].innerText;
+			oSign[i].onclick = (function(j){
+				return function(){
+					oSignarea[j].style.display = "block";
+				}
+			})(i);
+			confirm[i].onclick = (function(j){
+				return function(){
+					oSignarea[j].style.display = "none";
+					otext[j].innerText = oipt[j].value;
+				}
+			})(i);
+			cancle[i].onclick = (function(j){
+				return function(){
+					oSignarea[j].style.display = "none";
+				}
+			})(i);
+		}
+	</script>
+</html>

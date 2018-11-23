@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>DOM-tab切换</title>
+		<link href="css/reset.css" rel="stylesheet" />
+	</head>
+	<style>
+		body{
+			font-family: "微软雅黑";
+		}
+		.left{
+			float: left;
+		}
+		.right{
+			float: right;
+		}
+		.clearfix:after{
+			content: "";
+			display: block;
+			height: 0;
+			clear: both;
+			visibility: hidden;
+		}
+		.tab_box{
+			box-sizing: border-box;
+			width: 380px;
+			height: 280px;
+			margin: 100px auto;
+			overflow: hidden;
+		}
+		.tab_tit{
+			height: 37px;
+			background-color: #F8F8F7;
+			border: 1px solid #DBDDE3;
+		}
+		.tab_tit li{
+			float: left;
+			line-height: 36px;
+		}
+		.tab_tit li a{
+			display: block;
+			height: 36px;
+			padding: 0 10px;
+			font-size: 16px;
+			color: #333;
+		}
+		.tab_tit li.active{
+			border-top: 3px solid #F58B0B;
+			background: #FFFFFF;
+			border-left: 1px solid #DBDDE3;
+			border-right: 1px solid #DBDDE3;
+		}
+		
+		.tab_content{
+			height: 244px;
+			box-sizing: border-box;
+			padding-top: 25px;
+		}
+		.tab_pic{
+			height: 96px;
+		}
+		.tab_pic .pic{
+			position: relative;
+			float: left;
+			width: 112px;
+			height: 96px;
+			margin-right: 20px;
+			background: url(img/design1.png) no-repeat;
+		}
+		.tab_pic .pic2{
+			background: url(img/design2.png) no-repeat;
+		}
+		.tab_pic .pic3{
+			background: url(img/design3.png) no-repeat;
+		}
+		.tab_pic .pic4{
+			background: url(img/design8.png) no-repeat;
+		}
+		.tab_pic .pic5{
+			background: url(img/design5.png) no-repeat;
+		}
+		.tab_pic .pic6{
+			background: url(img/design8.png) no-repeat;
+		}
+		.tab_pic .pic7{
+			background: url(img/design3.png) no-repeat;
+		}
+		.tab_pic .pic8{
+			background: url(img/design2.png) no-repeat;
+		}
+		.tab_pic .pic a{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		.tab_pic .pic:last-of-type{
+			margin-right: 0;
+		}
+		.tab_pic .pic span{
+			position: absolute;
+			width: 100%;
+			height: 22px;
+			line-height: 22px;
+			top: 74px;
+			left: 0;
+			background: #000000;
+			text-align: center;
+			font-size: 13px;
+			color: #fff;
+		}
+		.tab_text{
+			height: 123px;
+		}
+		.tab_text ul{
+			box-sizing: border-box;
+			padding-top: 10px;
+			height: 123px;
+			font-size: 16px;
+		}
+		.tab_text ul li{
+			margin-bottom: 8px;
+		}
+		.text-left{
+			width: 48%;
+		}
+		.text-right{
+			width: 52%;
+		}
+		.tab_text ul li a{
+			color: #122E67;
+		}
+		.tab_text ul li a:hover{
+			color: #FB8400;
+			text-decoration: underline;
+		}
+	</style>
+	<body>
+		<div class="tab_box">
+			<ul class="tab_tit clearfix" id="tab_tit">
+				<li><a href="#">图片</a></li>
+				<li  class="active"><a href="#">专栏</a></li>
+				<li><a href="#">热点</a></li>
+			</ul>
+			<div class="tab_content" style="display: none;">
+				<div class="tab_pic clearfix">
+					<div class="pic pic1">
+						<a href="#">
+							<span>北京街头养眼潮女</span>
+						</a>
+					</div>
+					<div class="pic pic2">
+						<a href="#">
+							<span>什刹海朝霞满天飞</span>
+						</a>
+					</div>
+					<div class="pic pic3">
+						<a href="#">
+							<span>北航气质笑话</span>
+						</a>
+					</div>
+				</div>
+				<div class="tab_text clearfix">
+					<ul class="text-left left">
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+					</ul>
+					<ul class="text-right right">
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="tab_content">
+				<div class="tab_pic clearfix">
+					<div class="pic pic4">
+						<a href="#">
+							<span>潮人保暖有妙招</span>
+						</a>
+					</div>
+					<div class="pic pic5">
+						<a href="#">
+							<span>这里美的像仙境</span>
+						</a>
+					</div>
+					<div class="pic pic6">
+						<a href="#">
+							<span>长腿大眼萌少女</span>
+						</a>
+					</div>
+				</div>
+				<div class="tab_text clearfix">
+					<ul class="text-left left">
+						<li><a href="#">唐嫣对渣前任最好的打脸</a></li>
+						<li><a href="#">黎晓斌:深足冲超不再...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+					</ul>
+					<ul class="text-right right">
+						<li><a href="#">大唐玄奘遭奥斯卡无视</a></li>
+						<li><a href="#">邱国栋：足球从来不缺...</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="tab_content" style="display: none;">
+				<div class="tab_pic clearfix">
+					<div class="pic pic7">
+						<a href="#">
+							<span>北京街头养眼潮女</span>
+						</a>
+					</div>
+					<div class="pic pic8">
+						<a href="#">
+							<span>什刹海朝霞满天飞</span>
+						</a>
+					</div>
+					<div class="pic pic9">
+						<a href="#">
+							<span>北航气质笑话</span>
+						</a>
+					</div>
+				</div>
+				<div class="tab_text clearfix">
+					<ul class="text-left left">
+						<li><a href="#">全峰快递邮寄包裹里有...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+						<li><a href="#">西湖偷钓客钓走野生大...</a></li>
+					</ul>
+					<ul class="text-right right">
+						<li><a href="#">女大学生受到惊吓（图）</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+						<li><a href="#">416斤重大海龟惨遭屠宰</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+(function () {
+    var indexOrUITit = document.getElementById("tab_tit");
+    var indexOrUITitLis = indexOrUITit.getElementsByTagName("li");
+    var indexArr = document.querySelectorAll(".tab_content");
+    for (var i = 0; i < indexOrUITitLis.length; i++){
+        indexOrUITitLis[i].onclick = (function (j) {
+            return function () {
+                if(this.className == "active"){
+                    return;
+                };
+                var newNum = j,oldNum;
+                for (var k = 0; k < indexOrUITitLis.length; k++){
+                    if(indexOrUITitLis[k].className == "active"){
+                        oldNum = k;
+                        break;
+                    }
+                }
+                indexOrUITitLis[newNum].className = "active";
+                indexOrUITitLis[oldNum].className = "";
+                indexArr[newNum].style.display = "block";
+                indexArr[oldNum].style.display = "none";
+				if(indexOrUITitLis[0].className == "active"){
+					this.style.borderLeft = "none";
+					indexOrUITit.style.borderLeft = "none";
+				}
+				else indexOrUITit.style.borderLeft = "1px solid #DBDDE3";
+            }
+        })(i);
+    }
+})();
+	</script>
+</html>
