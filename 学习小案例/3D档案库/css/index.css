@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Microsoft yahei', Verdana, Arial, Helvetica, sans-serif;
+}
+li{
+    list-style: none;
+}
+html,body{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background:url("../images/bg.jpg") center center;
+    /*background-color: black;*/
+    background-size: cover;
+}
+#list ul{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /*width: 120px;*/
+    /*height: 160px;*/
+    width: 40px;
+    height: 60px;
+    /*margin-left: -60px;*/
+    /*margin-top: -80px;*/
+    margin-left: -20px;
+    margin-top: -26px;
+    transform-style: preserve-3d;
+    perspective: 2000px;/*为了突出问题，夸大效果，此为3D效果的景深*/
+    /*transform:  rotateX(0deg) rotateY(0deg);*/
+
+}
+#list ul li{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,127,127,0.5);
+    border: 1px solid rgba(0,255,255,0.5);
+    /*box-shadow: 0 0 12px rgba(0,255,255,0.5);*/
+    box-shadow: 0 0 2px rgba(0,255,255,0.5);
+    /*border-radius:2px;*/
+    /*line-height: 50px;*/
+    line-height: 16px;
+    letter-spacing: 0.5px;
+    color: #fff;
+    text-align: center;
+    font-size: 10px;
+    /*font-weight: bold;*/
+    cursor: pointer;
+    transition: 3s cubic-bezier(.94,.02,.49,.98);
+}
+/*.liTitle{*/
+    /*font-size: 12px;*/
+/*}*/
+/*p.liAuthor{*/
+    /*font-size: 6px;*/
+    /*line-height: 20px;*/
+/*}*/
+/*.liTime{*/
+    /*font-size: 7px;*/
+/*}*/
+#btn{
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    height: 32px;
+}
+#btn ul li{
+    height: 12px;
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #7FFFFF;
+    color: #7FFFFF;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    line-height: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color:transparent;
+    cursor: pointer;
+}
+#btn ul li:hover{
+    background-color: #006565;
+}
+#btn ul li.bg{
+    background-color: #006565;
+}
