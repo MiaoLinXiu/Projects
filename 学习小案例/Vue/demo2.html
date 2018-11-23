@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vue小例2</title>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+	new Vue({
+		el:"#text",
+		data:{
+			value:'你好世界',
+			flag:true,
+			flag1:['唱歌'],/*设置数组中值为唱歌时，复选框默认选中*/
+			flag2:'0',
+			items:[{name:'老师',value:'0'},{name:'学生',value:'1'},{name:'领导',value:'2'}],
+			selected:'1',
+			num:'29',
+			url:'img/02.jpg',
+			title:'美丽少女',
+			style:'sty1',//sty1为className
+			style1:'sty2',
+			style3:{color:'blue',fontSize:'14px',border:'1px solid red',width:'100px'},
+			style4:{background:'#f1f1f1'},
+			flag3:true,
+			msg:"志明与春娇"
+			},
+			methods:{
+				met1:function(){
+					this.msg = "I Miss You";
+					},
+				met2:function(){
+					this.msg = "志明与春娇";
+					}
+				}
+		
+		})
+	
+	}
+</script>
+<style>
+	.sty1{
+		color:#0F3;
+		font-family:"微软雅黑"；
+		font-size:20px;
+		}
+	.sty2{
+		font-weight:bold;
+		}
+	.aa{
+		color:red;
+		}
+	.bb{
+		color:blue;
+		}
+
+</style>
+</head>
+
+<body>
+	<div id="text">
+    	<div>
+    		<!--当输入框中的值为a时，输入框会被禁用-->
+			<input type="text" v-model="value" :disabled = 'value == "a"'/>
+   			 {{value}}<br />
+         </div>
+         <div>
+       	   	 <!--当复选框被选中时flag值为true,相反为false-->
+        	 <input type="checkbox" v-model="flag" />{{flag}}<br />
+         </div>
+         <div>
+              <!--当复选框组被选中时value值同时会传递给flag1数组中-->
+             <input type="checkbox" v-model="flag1" value="唱歌" />唱歌
+             <input type="checkbox" v-model="flag1" value="跳舞" />跳舞
+             <input type="checkbox" v-model="flag1" value="篮球" />篮球
+       		<span> {{flag1}}</span>
+        </div>
+        <div>
+       		 <!--当单选框组被选中时value值同时会传递给flag1数组中-->
+        	<input type="radio" v-model="flag2" value="0" name="test">男
+            <input type="radio" v-model="flag2" value="1" name="test">女
+            <span>{{flag2}}</span>
+        </div>
+        <!--下拉框组-->
+        <div>
+        	<select v-model="selected">
+            	<option v-for="item in items" :value="item.value">{{item.name}}</option>
+            </select>
+            <span>{{selected}}</span>
+        </div>
+        <div>
+        	<!--修饰符-->
+        	<input type="text" v-model.trim = "value" /><!--当输入的字符串前后有空格时会抹去-->
+            <input type="number" v-model.numeber = "num" /><!--只能输入数字-->
+        </div>
+        <div>
+        	<!--动态绑定-->
+        	<img v-bind:src="url" v-bind:title="title"/>
+        </div>
+        <!--引用单个样式-->
+        <div :class="style">
+        	志明与春娇
+        </div>
+        <!--引用多个样式-->
+        <div :class="[style,style1]">
+        	志明与春娇
+        </div>
+         <!--json引用方式-->
+        <div :class="{style:flag,style1:flag}">
+        	JSON
+        </div>
+         <!--style样式-->
+        <div :style="{color:'blue',fontSize:'14px',border:'1px solid red',width:'100px'}">
+        	志明与春娇
+        </div>
+       <!--引用多个样式-->
+        <div :style="[style3,style4]">
+        	style4
+        </div>
+        <!--三目运算符-->
+        <div :style="style3" @mouseover="met1()" @mouseout="met2()">
+        	{{msg}}
+        </div>
+    </div>
+</body>
+</html>

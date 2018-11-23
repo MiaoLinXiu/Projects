@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>vue实例属性和方法</title>
+<script type="text/javascript" src="js/vue.js"></script>
+<script>
+	var vm = null;
+	window.onload = function(){
+		vm = new Vue({
+			el:'#my',
+			data:{
+				name:'mary',
+				age:21,
+				sex:"male"
+				},
+			name:'sonia',//自定义属性
+			methods:{
+				show:function(){
+					
+					}
+				}
+			
+			});
+		console.log(vm.name);//1.获取data中的属性
+		console.log(vm.$data.age);//2.获取data中的属性
+		console.log(vm.$el);//3.获取vue实例关联的元素
+		console.log(vm.$options.name);//获取自定义属性的值
+		/*vm.$options.show();*/
+		var el = vm.$el;
+		el.style.backgroundColor="pink";
+		var sex = vm.$refs.sex;//vm.$refs 获取所有添加ref属性的元素
+		sex.style.color="yellow";
+		}
+</script>
+</head>
+
+<body>
+	<div id="my">
+    	<h2>{{name}}</h2>
+        <h2>{{age}}</h2>
+        <h2 ref="sex">{{sex}}</h2>
+    </div>
+</body>
+</html>

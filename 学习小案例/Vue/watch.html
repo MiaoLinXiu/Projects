@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>watch时间监听器</title>
+<script src="vue.js/vue.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		new Vue({
+			el:"#my",
+			data:{
+				msg:'Hello world',
+				num1:100,
+				name:'mary',
+				age:20
+				},
+			methods:{
+				change:function(){
+					this.num2 = 111;
+					},
+				getNum:function(){
+					console.log(this.num2);
+					}
+				
+				},
+			filters:{
+				
+				},
+			computed:{
+				
+				},
+			watch:{//监听
+				name:function(newValue,oldValue){
+					console.log('姓名被修改了',newValue,oldValue);
+					},
+				age:function(newValue,oldValue){
+					console.log('年龄被修改了',newValue,oldValue);
+					},
+				deep:true//表示监听对象的属性变化，但此时看不到newValue和oldValue的变化
+				
+				}
+			});
+			//方式2 外部写法
+		/*	vm.$watch('name',function(newValue,oldValue){
+				console.log('name被修改了',newValue,oldValue);
+				})	*/
+		}
+</script>
+</head>
+
+<body>
+	<div id="my">
+    	<input type="text" v-model="name" />
+        <h2>{{name}}</h2>
+    	<input type="text" v-model="age" />
+        <h2>{{age}}</h2>
+    </div>
+</body>
+</html>

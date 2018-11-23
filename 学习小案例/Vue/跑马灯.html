@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>跑马灯效果</title>
+		<script src="js/vue.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="my">
+			<input type="button" value="开始" @click="lang" />
+			<input type="button" value="结束" @click="stop" />
+			<p>{{msg}}</p>
+		</div>
+	</body>
+	<script>
+			var vm = new Vue({
+				el:'#my',
+				data:{
+					msg:'猥琐发育，别浪~~！',
+					timer:null//在data中定义定时器id
+				},
+				methods:{
+					lang:function(){				
+						var _this = this;
+						if (this.timer != null)return;
+						this.timer = setInterval(function(){
+							var start = _this.msg.substring(0,1);/*得到头的第一个字符 0代表下标 1代表取得数量*/
+							var end = _this.msg.substring(1);//获取到后面的所有字符 1下标为1的后面所有字符
+							_this.msg = end + start//后面的字符拼接在前面
+						},400)
+					},
+					stop:function(){
+						clearInterval(this.timer);
+						this.timer = null;//每当清除定时器之后,需要重新给timer赋值为null
+					}
+				}
+			});
+		</script>
+		<!--注意：在vm实例中，如果想要获得data中的数据，或者想要使用methods的方法，必须通过
+		this.数据属性名 或 this.方法名 来访问，这里的this指的就是我们new出啦vm实例对象-->
+</html>

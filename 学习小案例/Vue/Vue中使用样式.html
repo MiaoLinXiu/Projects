@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue中使用样式</title>
+	</head>
+	<style>
+		[v-cloak]{/*解决闪烁*/
+			display: none;
+		}
+		.red{
+			color: red;
+		}
+		.itatic{
+			font-style: italic;
+		}
+		.active{
+			letter-spacing: 0.5em;
+		}
+	</style>
+	<body>
+		<div id="app">
+			<!--class-->
+			<!--第一种方式，直接传递一个数组，注意：这里的class需要使用v-bind做数据绑定-->
+			<!--<h1 :class="['red','itatic']">{{msg}}</h1>-->
+			<!--在数组中使用三元表达式-->
+			<!--<h1 :class="['red','itatic',flag?'active':'']">{{msg}}</h1>-->
+			<!--在数组中使用对象俩代替三元表达啥，提高代码可读性-->
+			<!--<h1 :class="['red','itatic',{'active':flag}]" v-cloak>{{msg}}</h1>-->
+			<!--在为class使用v-bind绑定对象的时候，对象的属性是类名，由于对象的属性可带可不带引号，这里没有带；属性的值是一个标识符-->
+			<!--<h1 :class="{red:true,itatic:true,active:true}" v-cloak>{{msg}}</h1>
+			<h1 :class="classObj" v-cloak>{{msg}}</h1>-->
+			 
+			<!--使用内联样式-->
+			<!--1.直接在元素上通过:style的形式，书写样式对象-->
+			<!--<h1 :style="{color:'red','font-size':'16px'}" v-cloak>{{msg1}}</h1>-->
+			<!--2.将样式对象，定义到 data中，并直接引用到:style中-->
+			<!--<h1 :style="styleobj" v-cloak>{{msg1}}</h1>-->
+			<!--3.在:style中通过数组，引用多个data上的样式对象-->
+			<h1 :style="[styleobj,styleobj2]" v-cloak>{{msg1}}</h1>
+		</div>
+	</body>
+	<script src="js/vue.js"></script>
+	<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				msg:"这是一个很大很大H1，大到你无法想象",
+				msg1:"内联样式",
+				flag:true,
+				classObj:{red:true,itatic:true,active:true},
+				styleobj:{'color':'lightgreen','font-size':'16px','font-weight':'bold'},
+				styleobj2:{'letter-spacing':'.5em'}
+			},
+			methods:{
+				
+			}
+		})
+	</script>
+</html>

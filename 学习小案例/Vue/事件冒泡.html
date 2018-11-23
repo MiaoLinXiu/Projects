@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>阻止事件冒泡</title>
+</head>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		new Vue({
+			el:"#my",
+			data:{
+				msg:'Hello world',
+				msg1:'<span>123</span>'
+				
+				
+				},
+			methods:{
+				show1:function(){
+					console.log("1");
+					},
+				show2:function(){
+					console.log("2");
+					},
+				show3:function(e){
+					console.log("3");
+					e.stopPropagation();/*阻止事件冒泡*/
+					},
+				show4:function(e){
+					console.log("取消事件默认行为");
+					//e.preventDefault();/*阻止事件默认行为，例如这里不会跳转到百度首页*/
+					//e.stopPropagation();/*阻止事件冒泡，即不会执行父级元素的方法*/
+					},
+				show5:function(){
+					console.log("事件执行一次");
+					//e.stopPropagation();
+					}
+				
+				}
+			
+			
+			})
+		
+		}
+</script>
+<body>
+	<div id="my" @click="show1()">A1
+    	<div @click="show2()">A2
+        	<!--<button @click="show3($event)">A3</button>两种写法都可以-->
+        	<button @click.stop="show3()">A3</button>
+        </div>
+       	<!--<a href="www.baidu.com" @click="show4($event)">百度一下</a>-->
+        <a href="www.baidu.com" @click.stop.prevent="show4()">百度一下</a>
+        <div @click.once="show5()">once</div>
+    </div>
+</body>
+</html>

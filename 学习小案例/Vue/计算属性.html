@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vue计算属性</title>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		new Vue({
+			el:"#my",
+			data:{
+				msg:'Hello world',
+				num1:100
+				},
+			methods:{
+				change:function(){
+					this.num2 = 111;
+					},
+				getNum:function(){
+					console.log(this.num2);
+					}
+				
+				},
+			filters:{
+				
+				},
+			computed:{
+				reversemsg:function(){//计算属性：用来存储和处理数据
+					return this.msg.split('').reverse().join('');//返回倒过来的数据
+					},
+				num2:{
+					//return this.num - 1;
+					get:function(){
+						return this.num1 - 1;
+						},
+					set:function(val){
+						//this.num2 = val;//错误 不能直接修改计算属性的值
+						this.num1 = val;//如果要重新设置num1 的值可以this.num1 = 200;这样
+						}
+					}
+				
+				}
+			
+			
+			})
+		
+		}
+</script>
+</head>
+
+<body>
+	<div id="my">
+    	{{msg}}<br />
+    	{{reversemsg}}<br />
+        {{num2}}<br />
+       <!-- 计算属性变更-->
+        <button @click="change()">变更</button>
+        <!--计算属性获取-->
+        <button @click="getNum()">获取</button>
+    </div>
+</body>
+</html>

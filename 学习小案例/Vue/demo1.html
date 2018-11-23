@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vue小例1</title>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+		new Vue({
+			el:'#my',
+			data:{
+				msg:'Hello world',
+				name:'sonia',
+				name1:'jack',
+				age:22,
+				flag:true,
+				arr:[1,2,3,4],
+				arr1:{name:'tom',age:20},
+				arr2:[{name:'tom',age:20},{name:'mary',age:21}]
+				},
+			methods:{
+				myclick:function(){
+					this.msg="你好世界"
+					},
+				action:function(){
+					this.age="20"
+					},
+				action1:function(){
+					this.age="22"
+					}
+				}
+			});
+		
+		}
+
+</script>
+</head>
+
+<body>
+	<div id="my">
+		{{msg}}
+        <input type="text" v-model="msg" /><!--数据绑定-->
+        <ul>
+       		<li v-for="item in arr">{{item}}</li><!--v-for会遍历数值元素--><br />
+            <li v-for="(v,i) in arr">{{v}}==={{i}}</li><!--v-for会遍历数值元素  v为value值 i为数组数字所对应的index索引值--><br />
+            <li v-for="(v,k) in arr1">{{v}}===={{k}}</li><br /><!--v为value值 k为数组数字所对应的key键值-->
+            <li v-for="(v,i) in arr2">{{v.name}}===={{i}}</li><br /><!--v.name为value中的name值 i为数组数字所对应的index索引值-->
+            <li v-for="(v,i) in arr2">{{v.age}}===={{i}}</li><br /><!--v.age为value中的age值 i为数组数字所对应的index索引值-->
+        </ul>
+        <input type="button" value="点击我发生改变" v-on:click="myclick"/><br /><br />
+        <button v-on:mouseover="action" v-on:mouseout="action1" style="cursor:pointer">鼠标移入移开发生改变</button>
+         <button @mouseover="action" @mouseout="action1" style="cursor:pointer">鼠标移入移开发生改变</button><!--@符号为v-on的简写，可以替代-->
+         <button v-show="flag">show</button><!--v-show方法用于显示 flag值为true时，按钮会显示，如果为false按钮不会显示-->
+         
+        {{age}}
+        <p v-if="age > 25">{{age}}</p><!--如果age值（22）大于25会显示age值，否则显示name1的值jack-->
+        <p v-else>{{name1}}</p>
+       	</div>
+</body>
+</html>

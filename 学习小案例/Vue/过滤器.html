@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vue过滤器</title>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+	//vue.js允许使用自定义过滤器，可被用于一些常见的文本格式化。过滤器可以用在两个地方：
+	//双花括号差值和v-bind表达式.过滤器应该被添加在Javascript表达式的尾部，由管道符号指示：
+	//在花括号中{{message | capitalize}}
+	//在v-bind中 <div v-bind:id = "rawId | formatId"></div>
+//	Vue.filter('addZero',function(){
+//		//全局过滤器
+//		});
+	Vue.filter('infoFormat',function(info,arg){//过滤器是JS函数，因此可以接受参数,例如{{message | filterA('arg1'.'arg2')}}
+	//这里filterA被定义为可接受三个参数的过滤器函数。其中message的值作为第一个参数，arg1、arg2分别为第二、三个参数。
+	//2.同时过滤器可以串联{{message | filterA | filerB}}，例子中，filterA被定义为接受单个参数的过滤器函数，表达式message的值
+	//将作为参数传入到函数中。然后继续调用同样被定义为接收单个参数的过滤器函数filterB，将filterA的结果传递到filterB中。
+	//
+		return info.replace(/单纯/g, arg)
+	})
+	var vm = new Vue({
+		el:"#my",
+		data:{
+			msg:'3.14159',
+			flag:true,
+			info:'曾经，我也是一个单纯的少年，单纯的我，傻傻的问，谁是世界上最单纯的男人',
+			lists:[{name:'Tom',age:'15'},{name:'Mary',age:'17'},{name:'Frank',age:'20'}]
+			
+		},
+		methods:{
+			show1:function(){
+				console.log("111");
+			},
+			click1:function(){
+				this.flag = !this.flag
+				}
+		},
+		filters:{
+			number:function(data,n){
+				return data.toFixed(n);/*将传参四舍五入保留2位小数 n=2*/
+				},
+			addZero:function(data){
+				return data<10?"0"+data:data
+				},
+			text:function(data){
+				if (data){
+					return flag = "显示";}
+					else{
+					return flag = "隐藏";
+						}
+				},
+			nameFilter:function(data){
+				switch(data){
+					case 'Tom':
+						return '小学生';
+					case 'Mary':
+						return '中学生';
+					case 'Frank':
+						return '高中生';
+					}
+				}
+			
+			}
+		})
+	}
+</script>
+</head>
+
+<body>
+	<!--过滤器的使用-->
+	<div id="my">
+    	{{msg}}
+    	<div>{{3.1459 | number(2)}}</div>
+        <div>{{5 | addZero}}</div>
+        
+        <div>
+        	<button @click="click1()">{{flag | text}}</button>
+            <ul v-if="!flag">
+            	<li v-for="list in lists">{{list.name | nameFilter}}</li>
+            </ul>
+        </div>
+        {{info | infoFormat('疯狂')}}
+    </div>
+</body>
+</html>

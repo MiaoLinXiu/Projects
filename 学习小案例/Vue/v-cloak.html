@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-cloak解决闪烁问题</title>
+	</head>
+	<style>
+		[v-cloak]{
+			display: none;
+		}
+	</style>
+	<body>
+		<div id="my">
+			<!--使用v-cloak能够解决差值表达式闪烁的问题-->
+			<p v-cloak>{{msg}}</p>
+			<p v-text="msg">1111111111</p> <!--默认v-text是没有闪烁问题的-->
+			<!--v-text会覆盖元素中原本的内容，但是差值表达式只会替换自己的这个占位符，不会吧整个元素的内容清空-->
+			<p v-html="msg2"></p>
+			<!--v-bind: 是vue中提供的用于绑定属性的指令-->
+			<input type="button" value="点击" v-bind:title="mytitle" />
+			<!--v-bind可以省略-->
+			<input type="button" value="点击" :title="mytitle" />
+			<!--v-bind中，可以写合法的js的表达式-->
+			<input type="button" value="点击" :title="mytitle+'123'" /><br />
+			<!--v-on： 是vue中提供绑定时间的指令
+-->			<!--<input type="button" value="CLICK" v-on:click="show" />-->
+			<!--v-on: 可以用@符号替代-->
+			<input type="button" value="CLICK" @click="show" />
+		</div>
+	</body>
+	<script src="js/vue.js" type="text/javascript"></script>
+	<script>
+			var vm = new Vue({
+				el:'#my',
+				data:{
+					msg:'hello world',
+					msg2:'<strong>你真的好漂亮好漂亮啊</strong>',
+					mytitle:'这是一个自定义的title哦'
+				},
+				methods:{
+					show:function(){
+						alert('你好呀');
+					}
+				}
+				
+			})
+	</script>
+</html>

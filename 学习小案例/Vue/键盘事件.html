@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>键盘事件及语义化</title>
+<script src="js/vue.js"></script>
+<script type="text/javascript">
+	window.onload = function(){
+	new Vue({
+		el:"#my",
+		data:{
+			
+			
+		},
+		methods:{
+			show1:function(){
+				console.log("111");
+				},
+			keyEnter:function(){
+				console.log("keyEnter");
+				},
+			keya:function(){
+				console.log("a");
+				}
+			
+			}
+		
+		})
+	}
+</script>
+</head>
+
+<body>
+	<div id="my"> 
+    	<input type="text" @keydown="show1()"/><!--当有键按下时执行事件--><br />
+        <input type="text" @keydown.enter="keyEnter()"/><!--当回车键按下时执行事件--><br />
+		<input type="text" @keydown.a="keya()"/><br /><!--当A键按下时执行事件-->
+		<input type="text" @keyup.up="keya()"/><br /> <!--当所有键按起时执行事件-->   
+        <input type="text" @keypress="keya()"/><br /> <!--当所有键按住不放时执行事件-->    
+        <input @keydown.space="keya()" />
+
+    </div>
+</body>
+</html>
