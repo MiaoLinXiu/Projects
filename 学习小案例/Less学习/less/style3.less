@@ -1,0 +1,33 @@
+//模式匹配
+.mixin(dark,@color){
+    color: darken(@color,10%);//颜色亮度降低10%
+}
+.mixin(light,@color){
+    color: lighten(@color,10%);//颜色亮度增加10%
+}
+.mixin(@A,@color){
+    background-color: @color;
+}
+@switch:light;
+.long1{
+    .mixin(@switch,#888);
+}
+@switch2:dark;
+.long2{
+    .mixin(@switch2,#888);
+}
+//改变透明度
+.mixin2(@a){
+    /*mixin2(@a)*/
+    color: @a;
+}
+.mixin2(@a,@b){
+    /*mixin2(@a,@b)*/
+    color: fade(@a,@b);
+}
+.test{
+    .mixin2(#888);
+}
+.test2{
+    .mixin2(#888,10%);
+}

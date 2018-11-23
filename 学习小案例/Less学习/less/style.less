@@ -1,0 +1,39 @@
+@color:red;
+@width:1px;
+#header{
+    color: @color;
+}
+h2{
+    color: @color;
+}
+.meng{
+    @width:2px;
+    .long{
+        @width:500px;
+        width: @width;
+        @width:22px;
+    }
+    width:@width;
+    background: @color;
+}
+//media query作为变量，用作媒体查询
+@singleQuery:~"(max-width:768px)";
+#header{
+    background: blue;
+}
+@media screen and @singleQuery{
+    #header{
+        background: green;
+    }
+}
+//混合（Mixins）
+.w(){//添加上括号上就不会在CSS中显示，隐式属性继承
+    width: 200px;
+}
+.bg(){
+    background: aquamarine;
+}
+.div2{
+    .w();//隐式属性继承，调用时一定加上()
+    .bg();
+}

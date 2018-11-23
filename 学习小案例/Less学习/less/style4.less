@@ -1,0 +1,56 @@
+.mixin(@a) when (lightness(@a) >= 50%){
+    background-color:black;
+}
+.mixin(@a) when (lightness(@a) < 50%){
+    background-color:pink;
+}
+.mixin(@a){
+    color:@a;   
+}
+.test{
+    .mixin(#ddd);
+}
+.test2{
+    .mixin(#555);
+}
+//条件混合
+//Guards支持的运算符包括：> >= = =< <.说明一下，true关键字是唯一被判断为真的值，也就是这两个
+//混合是相等的。
+@IE:true;
+@w:10;
+.IE(@bTrue)when(@bTrue){
+   display: block; 
+}
+.IE1(@bTrue)when(@bTrue){
+   margin: 0;
+}
+.IE2(@bTrue)when(@bTrue >= 0){
+   padding: 0;
+}
+.IE3(@bTrue)when(@bTrue < 0){
+   padding: 5px;
+}
+div{
+    .IE(@IE);
+    .IE1(@w);
+    .IE2(@w);
+    .IE3(@w);
+}
+//guard中的and
+@h1:20;
+@w1:10;
+@true:true;
+.mixin2(@h1,@w1) when(@h1 > @w1) and (@true){
+    width: @h1;
+}
+div3{
+    .mixin2(@h1,@w1);
+}
+//guard中的not
+@h2:40;
+.mixin3(@h2) when not(@h2 < 0){
+    width: @h2;
+}
+div4{
+    .mixin3(@h2);
+}

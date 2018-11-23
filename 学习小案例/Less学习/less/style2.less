@@ -1,0 +1,107 @@
+//默认值混合
+.w(@width:100px){
+    width: @width;
+}
+.h(@height:200px){
+    height: @height;
+}
+.div2{
+    .w(150px);//传参了就是150px
+    .item{
+        .w();//如果没有传参就是默认参数100px
+        .h();//默认参数200px
+    }
+}
+//多参数混合：
+.mixin(@width){
+   width-1: @width; 
+}
+.mixin(@width,@height:2em){
+   width-2: @width;
+   height-2: @height;
+}
+.mixin(@width,@height,@margin:2em){
+    width-3: @width;
+    height-3: @height;
+    margin-3: @margin @margin @margin @margin;
+}
+.div3{
+    .mixin(100px);
+}
+.div4{
+    .mixin(200px,200px);
+}
+.div5{
+    .mixin(300px,300px,300px);
+}
+//混合 @auguments参数
+.trans(@A:A,@B:B,@C:C,@D:D){
+    A1:@arguments;
+}
+.div6{
+    .trans;
+}
+.div7{
+    .trans(a);
+}
+.div8{
+    .trans(a,b);
+}
+.div9{
+    .trans(a,b,c);
+}
+.div10{
+    .trans(a,b,c,d);
+}
+//！important关键字
+.my(@width:100px,@height:100px){
+    width: @width;
+    height: @height;
+}
+.meng{
+    .my;
+}
+.long{
+    .my(30px);
+}
+.menglong{
+    .my(200px,200px);
+}
+.meng2{
+    .my !important;
+}
+.long{
+    .my(30px) !important;;
+}
+.menglong{
+    .my(200px,200px) !important;;
+}
+//高级动态传参
+//接受0-N个参数
+.mixin1(...){
+    padding: @arguments;
+}
+//接受0-N个参数
+.mixin2(@a:1,...){
+    margin: @arguments;
+}
+//接受1-N个参数
+.mixin3(@a,...){
+    margin: @arguments;
+}
+//接受2-N个参数
+.mixin4(@a,...){
+    margin: @arguments;
+}
+.p1{
+   .mixin1(20px 30px 40px 50px);
+}
+.p2{
+   .mixin2(5,20px 30px 40px 50px);
+}
+.p3{
+    .mixin3(1);
+}
+.p4{
+    .mixin3(1,2);
+}
