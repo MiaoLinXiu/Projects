@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>3D旋转盒子</title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			background-color: gray;
+		}
+		.wrap{
+			width: 100%;
+			height: 200px;
+			margin-top: 150px;
+			perspective: 1000px;
+		}
+		/*big box*/
+		.cube{
+			position: relative;
+			width: 200px;
+			height: 200px;
+			margin: 0 auto;
+			transform-style: preserve-3d;
+			animation: move 20s linear infinite;
+		}
+		.cube div{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			font-size: 20px;
+			text-align: center;
+			line-height: 200px;
+			color: #FFF0F5;
+			text-indent: -99em;
+			overflow: hidden;
+			transition: .3s all ease-in; 
+		}
+		.cube .front{
+			transform: translateZ(100px);
+			background: url(img/02.jpg);
+		}
+		.cube .back{
+			transform: translateZ(-100px) rotateY(180deg);
+			background: url(img/03.jpg);
+		}
+		.cube .left{
+			transform: rotateY(-90deg) translateZ(100px);
+			background: url(img/04.jpg);
+		}
+		.cube .right{
+			transform: rotateY(90deg) translateZ(100px);
+			background: url(img/05.jpg);
+		}
+		.cube .top{
+			transform: rotateX(90deg) translateZ(100px);
+			background: url(img/06.jpg);
+		}
+		.cube .bottom{
+			transform: rotateX(-90deg) translateZ(100px);
+			background: url(img/07.jpg);
+		}
+		/*small box*/
+		.cube i{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			overflow: hidden;
+			top: 50%;
+			left: 50%;
+			margin: -50px 0 0 -50px;
+		}
+		.cube .i_front{
+			transform: translateZ(50px);
+			background: url(img/02.jpg);
+		}
+		.cube .i_back{
+			transform: translateZ(-50px) rotateY(180deg);
+			background: url(img/03.jpg);
+		}
+		.cube .i_left{
+			transform: rotateY(-90deg) translateZ(50px);
+			background: url(img/04.jpg);
+		}
+		.cube .i_right{
+			transform: rotateY(90deg) translateZ(50px);
+			background: url(img/05.jpg);
+		}
+		.cube .i_top{
+			transform: rotateX(90deg) translateZ(50px);
+			background: url(img/06.jpg);
+		}
+		.cube .i_bottom{
+			transform: rotateX(-90deg) translateZ(50px);
+			background: url(img/07.jpg);
+		}
+		/***cube hover***/
+		.cube:hover .front{
+			transform: translateZ(200px);
+		}
+		.cube:hover .back{
+			transform: translateZ(-200px) rotateY(180deg);
+		}
+		.cube:hover .left{
+			transform: rotateY(-90deg) translateZ(200px);
+		}
+		.cube:hover .right{
+			transform: rotateY(90deg) translateZ(200px);
+		}
+		.cube:hover .top{
+			transform: rotateX(90deg) translateZ(200px);
+		}
+		.cube:hover .bottom{
+			transform: rotateX(-90deg) translateZ(200px);
+		}
+		/*动画*/
+		@keyframes move{
+			0%{
+				transform: rotateX(0deg) rotateY(0deg);
+			}
+			100%{
+				transform: rotateX(360deg) rotateY(360deg);
+			}
+		}
+	</style>
+	<body>
+		<div class="wrap">
+			<div class="cube">
+				<div class="front">前面</div>
+				<div class="back">后面</div>
+				<div class="left">左面</div>
+				<div class="right">右面</div>
+				<div class="top">上面</div>
+				<div class="bottom">下面</div>
+				<i class="i_front"></i>
+				<i class="i_back"></i>
+				<i class="i_left"></i>
+				<i class="i_right"></i>
+				<i class="i_top"></i>
+				<i class="i_bottom"></i>
+			</div>
+		</div>
+	</body>
+</html>
