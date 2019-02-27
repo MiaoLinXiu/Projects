@@ -1,0 +1,20 @@
+<!-- 绑定手机号 -->
+<view class="container"> 
+<!-- 背景 -->
+  <view class="bindwrapper" style="background:url('../../images/bindphone.png') no-repeat;background-size:cover;">
+   <!-- 引入自定义组价。'navbar-data'中navbar是自定义名字，决定了组件中'navbarData'的名字 -->
+    <!-- <nav-bar navbar-data='{{navbarData}}'></nav-bar> -->
+    <form class='bindForm' bindsubmit='formSubmit'>
+      <view class='section'>  
+          <image src='{{InputValue.telUrl}}' style='width:32rpx;height:36rpx'></image>
+          <input name="input" placeholder="填写手机号码" value='{{InputValue.telNum}}' maxlength='11' class='telNum' placeholder-style='font-size: 34rpx;color: #DDDDDD;letter-spacing: 0;'/>
+          <text class='getCode' bindtap='getCode'>{{msg.getIndentify}}</text>
+      </view>
+      <view class='section sectionT'>  
+          <image src='{{InputCode.ideUrl}}' style='width:22rpx;height:48rpx'></image>
+          <input name="input" placeholder="输入验证码" value='{{InputCode.ideNum}}' maxlength='10' class='telNum' placeholder-style='font-size: 34rpx;color: #DDDDDD;letter-spacing: 0;'/>
+      </view>
+      <button class='btnSub' bindtap='btnSubmit' bindtap="bindview">立即绑定</button>
+    </form>
+  </view>
+</view>

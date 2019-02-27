@@ -1,0 +1,28 @@
+<!--pages/questions/questions.wxml-->
+<view class='container'>
+  <view class='pagewrapper'>
+  <!-- 测试题目 start-->
+    <view class='testTitle'>
+      <text class='testQues'>{{questions.ques1}}</text>
+    </view>
+    <!-- 测试题 end -->
+    <!-- 题目选项 start-->
+    <view class='answers'  wx:for="{{answers}}" wx:key='*this'>
+      <view class='answerA'>
+        <view class='chioce' >{{item.ans}}</view>
+      </view>
+    </view>
+    <!-- 测试题目 end -->
+    <!-- 当前页面 start-->
+    <view class='pages'>
+      <text class='nowPage active' bindtap=''>{{pages.nowpage}}</text>
+      <text class='allPages'>/{{pages.allpages}}</text>
+    </view>
+    <!-- 当前页面 end -->
+    <!-- 技术支持 start-->
+    <view class='technogy'>
+      <text>{{techsupport}}</text>
+    </view>
+    <!-- 技术支持 end-->
+  </view>
+</view>

@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/questions/questions",
+    "pages/logs/logs",
+
+    "pages/index/index",
+    "pages/bindPhone/bindPhone",
+    "pages/inputInfo/inputInfo",
+    "pages/startTest/start"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "0到6岁测评成长计划",
+    "navigationBarTextStyle": "black"
+    
+  }
+}

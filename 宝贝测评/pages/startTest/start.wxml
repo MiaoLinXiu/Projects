@@ -1,0 +1,37 @@
+<!--pages/startTest/start.wxml-->
+<view class='container'>
+  <view class='startwrapper'>
+  <!-- 学生基本信息start -->
+    <view class='childTitle'>
+      <text class='childName'>{{childInfo.name}}</text>
+    </view>
+    <view class='smallTitle'>
+      <text class='childOther'>{{childInfo.age}} | {{childInfo.sex}}</text>
+    </view>
+    <!-- 学生信息end -->
+    <!-- logo start -->
+    <view class='logo'>
+      <image src="{{Kindergarten.logoUrl}}" style='width:150rpx;height:74rpx;' mode='{{Kindergarten.mode}}'></image>
+    </view>
+    <!-- logo end -->
+    <!-- 园所简介 -->
+    <view class='Introduce'>
+      <text>{{Kindergarten.intro}}</text>
+    </view>
+    <!-- 园所简介 end -->
+    <!-- 开始测试 -->
+    <view class='testBtn'>
+      <button type='primary' bindtap='TestBegin'>开始测试</button>
+    </view>
+    <!-- end -->
+    <!-- 了解我们 -->
+    <view class='knowUs'>
+      <view>
+        <text class='support'>{{aboutUs.technical}}</text>
+      </view>
+      <view>
+        <text class='aboutUs'>{{aboutUs.quick}}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,45 @@
+/* pages/inputInfo.wxss */
+.Infowrapper{
+  box-sizing: border-box;
+  width: 100%;
+  height: 1202rpx;
+  font-family: PingFangSC-Regular;
+  border-top: 1rpx solid #E5E5E5;
+}
+.section{
+  display: flex;
+  align-items: center;
+  height: 86rpx;
+  border-bottom: 1rpx solid #E5E5E5;
+  margin-left: 30rpx;
+  font-size: 34rpx;
+}
+.section .title{
+  color: #000000;
+  letter-spacing: 0;
+}
+.childName{
+  width: 238rpx;
+  height: 48rpx;
+  color: #575757;
+  letter-spacing: 0;
+  text-align: right;
+  margin-left: 294rpx;
+}
+.childBirth{
+  width: 238rpx;
+  height: 48rpx;
+  text-align: right;
+  color: #575757;
+}
+.datepick{
+  position: relative;
+  width: 282rpx;
+  height: 48rpx;
+  margin-left: 250rpx;
+}
+.kidBirth .icon{
+  position: absolute;
+  top: 16rpx;
+  right: 0;
+}

@@ -1,0 +1,31 @@
+<!--pages/inputInfo.wxml-->
+<view class='container'>
+  <view class='Infowrapper'>
+      <!-- 姓名 -->
+     <view class='section kidName'>
+        <text class='title'>{{childName.text}}</text>
+        <input placeholder='请输入宝宝姓名' maxlength='10' type='text' class='childName' 
+        value='{{childName.name}}' placeholder-style='font-size: 17px;color: #B2B2B2;letter-spacing: 0;'></input>
+     </view> 
+     <!-- 出生日期 -->
+     <view class='section kidBirth'>
+        <text class='title'>{{childBirth.text}}</text>
+        <picker mode="date" value="{{date}}" start="2000-09-01" end="2025-09-01" bindchange="bindDateChange" class='datepick'>
+            <view class="picker">
+              <input placeholder='请选择出生年月' placeholder-style='font-size: 17px;color: #B2B2B2;letter-spacing: 0;'disabled  class='childBirth' value='{{date}}'></input>
+              <image src="{{childBirth.iconUrl}}" style='width:16rpx;height:26rpx' class='icon'></image>
+            </view>
+        </picker>
+     </view> 
+     <!-- 宝宝性别 -->
+     <view class='section kidBirth kidSex'>
+        <text class='title'>{{childSex.text}}</text>
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{childSex.array}}" class='datepick'>
+            <view class="picker">
+              <input placeholder='请选择宝宝性别' placeholder-style='font-size: 17px;color: #B2B2B2;letter-spacing: 0;'disabled  class='childBirth' value='{{childSex.array[index]}}'></input>
+              <image src="{{childBirth.iconUrl}}" style='width:16rpx;height:26rpx' class='icon'></image>
+            </view>
+        </picker>
+     </view> 
+  </view>
+</view>

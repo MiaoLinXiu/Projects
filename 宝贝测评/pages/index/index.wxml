@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="startPage">
+    <!-- 滑块区域 -->
+     <swiper class="swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{bgcolor}}" indicator-active-color="{{active}}">
+        <block wx:for="{{pageInfo}}" wx:key="*this">
+          <swiper-item>
+             <image src='{{item.bgSrc}}' style='width:476rpx;height:360rpx;' mode='{{item.mode}}'></image>
+              <rich-text class="title">{{item.title}}</rich-text>
+              <text class='small'>{{item.small}}</text>
+          </swiper-item>
+        </block>
+      </swiper>
+      <!-- 按钮 -->
+      <button type="primary" size="default" bindtap="nextPage" class='loginBtn'>授权登录</button>
+    </view>
+</view>
